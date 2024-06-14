@@ -1,0 +1,62 @@
+{
+  "name": "@jvddavid/ts-events",
+  "version": "0.0.1",
+  "description": "A events implementation for typescript",
+  "type": "commonjs",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "keywords": [
+    "typescript",
+    "events",
+    "event-emitter"
+  ],
+  "author": {
+    "name": "João Victor Davi de Oliveira",
+    "email": "j.victordavid2@gmail.com",
+    "url": "https://github.com/jvddavid/ts-events"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+github.com:jvddavid/ts-events.git"
+  },
+  "bugs": {
+    "email": "j.victordavid2@gmail.com",
+    "url": "https://github.com/jvddavid/ts-events/issues"
+  },
+  "packageManager": "pnpm@9.2.0",
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.8.1",
+    "@types/events": "^3.0.3",
+    "events": "^3.3.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5.4.5"
+  },
+  "scripts": {
+    "build:ts": "tsc -p tsconfig.json",
+    "build:js": "node scripts/build.js",
+    "build": "pnpm run build:ts && pnpm run build:js",
+    "prepublishOnly": "pnpm run build"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js",
+      "node": "./dist/index.js",
+      "browser": "./dist/index.browser.mjs",
+      "umd": "./dist/index.umd.js"
+    }
+  },
+  "files": [
+    "dist"
+  ]
+}
