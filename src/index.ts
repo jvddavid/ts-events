@@ -65,3 +65,5 @@ export class EventEmitter<ListenEvents extends EventMap = EventMap, EmitEvents e
     return super.rawListeners(eventName) as ((...eventArg: EventArgs) => void)[]
   }
 }
+
+export default EventEmitter

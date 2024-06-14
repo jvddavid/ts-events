@@ -17,7 +17,8 @@
         "recommended": true
       },
       "style": {
-        "useNodejsImportProtocol": "off"
+        "useNodejsImportProtocol": "off",
+        "noDefaultExport": "off"
       },
       "correctness": {
         "noNodejsModules": "off"
