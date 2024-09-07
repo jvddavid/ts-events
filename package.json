@@ -1,12 +1,8 @@
 {
   "name": "@jvddavid/ts-events",
-  "version": "0.0.2",
-  "description": "A events implementation for typescript",
-  "type": "commonjs",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
+  "version": "0.0.3",
   "license": "MIT",
+  "description": "A events implementation for typescript",
   "keywords": [
     "typescript",
     "events",
@@ -25,38 +21,49 @@
     "email": "j.victordavid2@gmail.com",
     "url": "https://github.com/jvddavid/ts-events/issues"
   },
-  "packageManager": "pnpm@9.2.0",
-  "engines": {
-    "node": ">=20.0.0",
-    "npm": ">=10.0.0",
-    "pnpm": ">=9.0.0"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "^1.8.1",
-    "@types/events": "^3.0.3",
-    "events": "^3.3.0"
-  },
-  "peerDependencies": {
-    "typescript": "^5.4.5"
-  },
-  "scripts": {
-    "build:ts": "tsc -p tsconfig.json",
-    "build:js": "node scripts/build.js",
-    "build": "pnpm run build:ts && pnpm run build:js",
-    "prepublishOnly": "pnpm run build"
-  },
+  "type": "commonjs",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.cts",
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js",
-      "default": "./dist/index.js",
-      "node": "./dist/index.js",
-      "browser": "./dist/index.browser.mjs",
-      "umd": "./dist/index.umd.js"
+    "require": {
+      "types": "./dist/index.d.cts",
+      "default": "./dist/index.cjs"
+    },
+    "import": {
+      "types": "./dist/index.d.mts",
+      "default": "./dist/index.mjs"
     }
   },
   "files": [
-    "dist"
-  ]
+    "dist",
+    "README.md",
+    "package.json",
+    "tsconfig.json"
+  ],
+  "devDependencies": {
+    "@eslint/js": "^9.9.1",
+    "@stylistic/eslint-plugin": "^2.7.2",
+    "@types/node": "^22.5.4",
+    "eslint": "^9.9.1",
+    "globals": "^15.9.0",
+    "pkgroll": "^2.4.2",
+    "tsx": "^4.19.0",
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^8.4.0",
+    "vitest": "^2.0.5"
+  },
+  "scripts": {
+    "prepublishOnly": "npm run type:check && npm run lint && npm run build && npm run test",
+    "start": "node dist/index.mjs",
+    "type:check": "tsc --noEmit",
+    "build": "pkgroll --clean-dist --minify --target=es2023 --target=node20",
+    "lint": "eslint src tests",
+    "lint:fix": "eslint --fix src tests",
+    "dev": "tsx --watch src/index.ts",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {},
+  "optionalDependencies": {}
 }

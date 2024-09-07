@@ -11,6 +11,7 @@ npm install @jvddavid/ts-events
 ## Example
 
 ```typescript
+import { EventEmitter } from '@jvddavid/ts-events'
 
 type TestEventMap = {
   test: [message: string]
