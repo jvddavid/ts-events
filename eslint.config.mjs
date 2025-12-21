@@ -8,7 +8,7 @@ export default [
   { languageOptions: { globals: globals.node } },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
-  stylistic.configs['all-flat'],
+  stylistic.configs['all'],
   stylistic.configs.customize({
     // the following options are the default values
     indent: 2,

@@ -1,4 +1,4 @@
-FROM node:20-alpine AS build
+FROM node:24-alpine AS build
 RUN corepack enable
 
 WORKDIR /app
@@ -8,7 +8,7 @@ RUN pnpm install --frozen-lockfile
 COPY . .
 RUN pnpm build
 
-FROM node:20-alpine
+FROM node:24-alpine
 
 WORKDIR /app
 COPY --from=build /app/package.json /app/pnpm-lock.yaml ./
